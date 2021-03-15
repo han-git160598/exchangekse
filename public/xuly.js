@@ -1,5 +1,5 @@
 
-var socket = io('https://kse-trading.herokuapp.com/');
+var socket = io('https://exchangekse.herokuapp.com/');
 socket.on('toa-do',function (params) {
     console.log(params);
 });
