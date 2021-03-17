@@ -43,7 +43,7 @@ io.on("connection", function(socket){
   }
   function random_y(number)
   {
-    return Math.round((number + (Math.random() < 0.5 ? 1 : -1) * Math.random()) *1000)/1000;
+    return Math.round((number + (Math.random() < 0.5 ? 1 : -1) * Math.random()) *100)/100;
   }
   if(dem < 2 )
   {
