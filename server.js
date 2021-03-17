@@ -47,7 +47,7 @@ io.on("connection", function(socket){
   }
   if(dem < 2 )
   {
-      var visits=10;
+      var visits=23000;
       setInterval(function () {
       var y = random_y(visits);
       visits =y;
