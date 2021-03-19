@@ -10,6 +10,8 @@ app.set("views", "./views");
 
 var server = require("http").Server(app);
 const io = require('socket.io')(server, {
+    pingTimeout: 43200000,
+    pingInterval: 2000,
     cors: {
       origin: '*',  
     }
