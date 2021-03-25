@@ -22,8 +22,8 @@ const io = require('socket.io')(server, {
 server.listen(process.env.PORT || 3001 );
 
 
-//const url = 'http://diendengiadung.com/api/'  //host
-const url ='';
+const url = 'http://diendengiadung.com/api/'  //host
+//const url ='';
 //const url = 'http://192.168.100.21/kse_trade/api/'  // locals
 const headers = { 'Authorization': 'Basic YWRtaW46cXRjdGVrQDEyMwx==' }
 io.on("connection", function(socket){ 
