@@ -46,7 +46,7 @@ function random_y(number)
   var visits=23000;
   setInterval(function () {
   var y = random_y(visits);
-  // visits = y;
+  visits = y;
   var x = Math.floor((new Date().getTime())/1000);
   var xy = {x:x, y:y};
   var coordinate_xy = JSON.stringify(xy);
@@ -108,7 +108,7 @@ function random_y(number)
           }else{
             console.log('break');
             var G = JSON.parse(res.data.data[0].coordinate_g);
-            y = Math.round((TaoSoNgauNhien(G.y-0.3, G.y+0.5)) * 1000) / 1000;
+            y = Math.round((TaoSoNgauNhien(G.y-0.5, G.y+0.6)) * 1000) / 1000;
             coordinate_xy = JSON.stringify({x:x, y:y}); 
             const data_add_coordinate = { detect: 'add_coordinate',coordinate_xy:coordinate_xy, time_present:x,
             session_time_open:x};
@@ -128,7 +128,7 @@ function random_y(number)
           {
             console.log('finish');
             var G = JSON.parse(res.data.data[0].coordinate_g);
-            y = TaoSoNgauNhien(G.y-0.1, G.y-0.9);
+            y = TaoSoNgauNhien(G.y-0.3, G.y-0.9);
             coordinate_xy = JSON.stringify({x:x, y:y}); 
             const data_add_coordinate = { detect: 'add_coordinate',coordinate_xy:coordinate_xy, time_present:x,
             session_time_open:x};
@@ -142,7 +142,7 @@ function random_y(number)
           }else{
             console.log('break');
             var G = JSON.parse(res.data.data[0].coordinate_g);
-            y = Math.round((TaoSoNgauNhien(G.y-0.3, G.y+0.5)) * 1000) / 1000;
+            y = Math.round((TaoSoNgauNhien(G.y-0.5, G.y+0.6)) * 1000) / 1000;
             coordinate_xy = JSON.stringify({x:x, y:y}); 
             const data_add_coordinate = { detect: 'add_coordinate',coordinate_xy:coordinate_xy, time_present:x,
             session_time_open:x};
