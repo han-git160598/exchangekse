@@ -61,7 +61,7 @@ function random_y(number)
   const data_round1 = { detect: 'check_time_block',session_time_break:x };
   axios.post(url, data_round1, { headers,
   }).then((res) => {
-    
+  try {
     if(res.data.data[0].status_trade == 'trading')
     {
       console.log('trading');
@@ -164,6 +164,9 @@ function random_y(number)
       
 
     }
+} catch (e) {   
+    io.emit('erro-serve',e);
+}
       
   }).catch((error) => {
   })
