@@ -45,6 +45,7 @@ function random_y(number)
 }
   var visits=23000;
   setInterval(function () {
+  io.emit('check-socket','running');
   var y = random_y(visits);
   visits = y;
   var x = Math.floor((new Date().getTime())/1000);
