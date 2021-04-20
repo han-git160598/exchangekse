@@ -1,5 +1,10 @@
 
 var socket = io('https://exchangekse.herokuapp.com/');
+
+socket.on('check-socket',function(data)
+{
+console.log(data);
+});
 socket.on('toa-do',function (params) {
     console.log(params);
 });
@@ -18,3 +23,5 @@ socket.on('erro-serve',function(data)
 {
     console.log(data);
 });
+
+
