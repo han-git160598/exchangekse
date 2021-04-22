@@ -22,6 +22,7 @@ console.log(data);
 socket.on('erro-serve',function(data)
 {
     console.log(data);
+    console.log('erro');
 });
 
 
