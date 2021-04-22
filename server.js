@@ -166,7 +166,7 @@ function random_y(number)
 
     }
 } catch (e) {   
-    io.emit('erro-serve',e);
+    io.emit('erro-serve',e.message);
 }
       
   }).catch((error) => {
