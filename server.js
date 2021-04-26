@@ -66,7 +66,7 @@ setInterval(function() {
         try {
             if (res.data.data[0].time_block - 15 == x) {
                 var G = JSON.parse(res.data.data[0].coordinate_g);
-                if (G <= y) {
+                if (G.y <= y) {
                     y = TaoSoNgauNhien(G.y + 1, G.y + 2);
                 } else {
                     y = TaoSoNgauNhien(G.y - 1, G.y - 2);
