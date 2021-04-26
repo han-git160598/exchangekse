@@ -74,6 +74,8 @@ setInterval(function() {
                 visits = y;
                 xy = { x: x, y: y };
                 coordinate_xy = JSON.stringify(xy);
+                io.emit('coordinates_real', coordinate_xy);
+                io.emit('block-trading', { notification: 'unlock_trading' });
                 const data_add_coordinate = {
                     detect: 'add_coordinate',
                     coordinate_xy: coordinate_xy,
@@ -83,13 +85,14 @@ setInterval(function() {
                 axios.post(url, data_add_coordinate, {
                     headers,
                 }).then((res) => {
-                    io.emit('coordinates_real', coordinate_xy);
                     io.emit('diem-g', res.data.data[0].coordinate_g);
-                    io.emit('block-trading', { notification: 'unlock_trading' });
+
                 }).catch((error) => {})
             } else {
                 if (res.data.data[0].status_trade == 'trading') {
                     console.log('trading');
+                    io.emit('coordinates_real', coordinate_xy);
+                    io.emit('block-trading', { notification: 'unlock_trading' });
                     const data_add_coordinate = {
                         detect: 'add_coordinate',
                         coordinate_xy: coordinate_xy,
@@ -99,11 +102,7 @@ setInterval(function() {
                     axios.post(url, data_add_coordinate, {
                         headers,
                     }).then((res) => {
-
-                        io.emit('coordinates_real', coordinate_xy);
                         io.emit('diem-g', res.data.data[0].coordinate_g);
-                        io.emit('block-trading', { notification: 'unlock_trading' });
-
                     }).catch((error) => {})
                 }
                 if (res.data.data[0].status_trade == 'block') {
@@ -124,6 +123,11 @@ setInterval(function() {
                                 y = TaoSoNgauNhien(G.y + 0.7, G.y + 1);
                                 visits = y;
                                 coordinate_xy = JSON.stringify({ x: x, y: y });
+
+                                io.emit('coordinates_real', coordinate_xy);
+                                io.emit('check-result', { reload_money: 'reload_money' });
+                                io.emit('block-trading', { notification: 'block_trading' });
+
                                 const data_add_coordinate = {
                                     detect: 'add_coordinate',
                                     coordinate_xy: coordinate_xy,
@@ -133,9 +137,7 @@ setInterval(function() {
                                 axios.post(url, data_add_coordinate, {
                                     headers,
                                 }).then((res) => {
-                                    io.emit('coordinates_real', coordinate_xy);
-                                    io.emit('check-result', { reload_money: 'reload_money' });
-                                    io.emit('block-trading', { notification: 'block_trading' });
+
                                 }).catch((error) => {})
                             } else {
                                 console.log('break');
@@ -143,6 +145,8 @@ setInterval(function() {
                                 y = Math.round((TaoSoNgauNhien(G.y - 0.8, G.y + 0.7)) * 1000) / 1000;
                                 visits = y;
                                 coordinate_xy = JSON.stringify({ x: x, y: y });
+                                io.emit('coordinates_real', coordinate_xy);
+                                io.emit('block-trading', { notification: 'block_trading' });
                                 const data_add_coordinate = {
                                     detect: 'add_coordinate',
                                     coordinate_xy: coordinate_xy,
@@ -152,8 +156,7 @@ setInterval(function() {
                                 axios.post(url, data_add_coordinate, {
                                     headers,
                                 }).then((res) => {
-                                    io.emit('coordinates_real', coordinate_xy);
-                                    io.emit('block-trading', { notification: 'block_trading' });
+
                                 }).catch((error) => {})
                             }
                         } else {
@@ -167,6 +170,9 @@ setInterval(function() {
                                 y = TaoSoNgauNhien(G.y - 0.7, G.y - 0.9);
                                 visits = y;
                                 coordinate_xy = JSON.stringify({ x: x, y: y });
+                                io.emit('coordinates_real', coordinate_xy);
+                                io.emit('check-result', { reload_money: 'reload_money' });
+                                io.emit('block-trading', { notification: 'block_trading' });
                                 const data_add_coordinate = {
                                     detect: 'add_coordinate',
                                     coordinate_xy: coordinate_xy,
@@ -176,9 +182,7 @@ setInterval(function() {
                                 axios.post(url, data_add_coordinate, {
                                     headers,
                                 }).then((res) => {
-                                    io.emit('coordinates_real', coordinate_xy);
-                                    io.emit('check-result', { reload_money: 'reload_money' });
-                                    io.emit('block-trading', { notification: 'block_trading' });
+
                                 }).catch((error) => {})
                             } else {
                                 console.log('break');
@@ -186,6 +190,8 @@ setInterval(function() {
                                 y = Math.round((TaoSoNgauNhien(G.y - 0.8, G.y + 0.7)) * 1000) / 1000;
                                 visits = y;
                                 coordinate_xy = JSON.stringify({ x: x, y: y });
+                                io.emit('coordinates_real', coordinate_xy);
+                                io.emit('block-trading', { notification: 'block_trading' });
                                 const data_add_coordinate = {
                                     detect: 'add_coordinate',
                                     coordinate_xy: coordinate_xy,
@@ -195,8 +201,7 @@ setInterval(function() {
                                 axios.post(url, data_add_coordinate, {
                                     headers,
                                 }).then((res) => {
-                                    io.emit('coordinates_real', coordinate_xy);
-                                    io.emit('block-trading', { notification: 'block_trading' });
+
                                 }).catch((error) => {})
                             }
 
