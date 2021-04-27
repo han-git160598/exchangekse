@@ -55,15 +55,15 @@ setInterval(function() {
     axios.post(url, data_round1, {
         headers,
     }).then((res) => {
-        if (res.data.success == "false") {
-            const auto_create = { detect: 'auto_creat_session', stock_time_close: x };
-            axios.post(url, auto_create, {
-                headers,
-            }).then((res) => {
+        try {
+            if (res.data.success == "false") {
+                const auto_create = { detect: 'auto_creat_session', stock_time_close: x };
+                axios.post(url, auto_create, {
+                    headers,
+                }).then((res) => {
 
-            }).catch((error) => {})
-        } else {
-            try {
+                }).catch((error) => {})
+            } else {
                 if (res.data.data[0].time_block - 15 == x) {
                     var G = JSON.parse(res.data.data[0].coordinate_g);
                     if (G.y <= y) {
@@ -209,11 +209,12 @@ setInterval(function() {
                         }).catch((error) => {})
                     }
                 }
-
-            } catch (e) {
-                io.emit('erro-serve', e.message);
             }
+
+        } catch (e) {
+            io.emit('erro-serve', e.message);
         }
+
 
 
     }).catch((error) => {})
