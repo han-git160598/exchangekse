@@ -245,6 +245,8 @@ setInterval(function() {
             }
         } catch (e) {
             io.emit('erro-serve', e.message);
+            visits = 23000;
+            check_time_block();
         }
     }
 }, 1000);
