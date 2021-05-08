@@ -56,6 +56,7 @@ function check_time_block() {
             headers,
         }).then((res) => {
             if (res.data.success == "false") {
+                flag = 0;
                 const auto_create = { detect: 'auto_creat_session', stock_time_close: x };
                 axios.post(url, auto_create, {
                     headers,
