@@ -82,6 +82,7 @@ check_time_block();
 
 setInterval(function() {
     io.emit('check-socket', 'running');
+    console.log(flag);
     if (flag == 1) {
         y = random_y(visits);
         visits = y;
