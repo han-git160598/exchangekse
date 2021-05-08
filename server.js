@@ -249,8 +249,6 @@ setInterval(function() {
             visits = 23000;
             check_time_block();
         }
-    }else{
-    check_time_block();
     }
 }, 1000);
 
