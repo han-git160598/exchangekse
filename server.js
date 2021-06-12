@@ -61,11 +61,12 @@ function check_time_block() {
         }).then((res) => {
             if (res.data.success == "false") {
                 flag = 0;
+                console.log('auto_creat_session');
                 const auto_create = { detect: 'auto_creat_session', stock_time_close: x };
                 axios.post(url, auto_create, {
                     headers,
                 }).then((res) => {
-
+                
                 }).catch((error) => {})
 
             } else {
