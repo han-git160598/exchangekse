@@ -52,6 +52,17 @@ var result_trade = 'up';
 var id_period;
 
 
+var flag_percent=0;
+
+function update_customer_percent()
+{
+    const reset_trading_log = { detect: 'reset_trading_log'};
+    axios.post(url, reset_trading_log, { headers,
+    }).then((res) => {
+
+    }).catch((error) => {})
+}
+
 function check_time_block() {
     var ctb_interval = setInterval(function() {
         x = Math.floor((new Date().getTime()) / 1000);
@@ -61,15 +72,24 @@ function check_time_block() {
         }).then((res) => {
             if (res.data.success == "false") {
                 flag = 0;
-                console.log('auto_creat_session');
+                
+                flag_percent +=1;
+                if(flag_percent == 1)
+                {
+                    update_customer_percent();
+                }
+                
+                
                 const auto_create = { detect: 'auto_creat_session', stock_time_close: x };
                 axios.post(url, auto_create, {
                     headers,
                 }).then((res) => {
-                
+                    io.emit('check-socket', 'running-auto_creat_session');
                 }).catch((error) => {})
 
             } else {
+                
+                flag_percent = 0;
                 console.log('check_time_block')
                 time_open = parseInt(res.data.data[0].time_open);
                 time_block = parseInt(res.data.data[0].time_block);
@@ -85,6 +105,7 @@ function check_time_block() {
 
     }, 1000);
 }
+
 
 check_time_block();
 
